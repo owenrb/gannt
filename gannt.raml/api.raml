@@ -1,0 +1,48 @@
+#%RAML 1.0
+title: Gannt API
+version: v1
+baseUri: http://api.samplehost.com
+types:
+  ProjectType: !include resourceTypes/ProjectType.raml
+  ProjectRef: !include resourceTypes/ProjectRefType.raml
+  ErrorType: !include resourceTypes/ErrorType.raml
+
+/projects:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: array
+            items: ProjectRef
+  /{name}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: ProjectType
+        401:
+          body:
+            application/json:
+              type: ErrorType
+    post:
+      responses:
+        201:
+          body:
+            application/json:
+              type: ProjectType
+        401:
+          body:
+            application/json:
+              type: ErrorType
+    put:
+      responses:
+        200:
+          body:
+            application/json:
+              type: ProjectType
+        401:
+          body:
+            application/json:
+              type: ErrorType

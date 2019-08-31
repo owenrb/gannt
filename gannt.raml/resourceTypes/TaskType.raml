@@ -1,0 +1,31 @@
+#%RAML 1.0 DataType
+
+type: object
+displayName: TaskType
+properties:
+  id:
+    description: used to synch data with the server. If the id is supplied by the server it will untouched. Tasks created client side will acquire a temporary id starting with  "tmp_"
+    type: string
+    example: tmp_fk1345562123031
+  level:
+    description: it is the depth (the indentation) of a task in the Gantt structure. The root task is at level 0 (zero), its children at level 1 (one) and so on. Levels must be consistent with the project structure: you can’t have a task of level n+1 if you don't have a task of level n above on the array
+    type: integer
+    example: 0
+  start: number
+  end: number
+  duration: number
+  startIsMilestone: boolean
+  endIsMilestone: boolean
+  depends: string
+  status:
+    enum:
+      - STATUS_ACTIVE
+      - STATUS_DONE
+      - STATUS_FAILED
+      - STATUS_SUSPENDED
+      - STATUS_UNDEFINED
+  progress: number
+  assigs:
+    type: array
+    items:
+      type: !include AssignmentType.raml

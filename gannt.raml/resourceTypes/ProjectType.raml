@@ -1,0 +1,25 @@
+#%RAML 1.0 DataType
+
+type: object
+displayName: ProjectType
+properties:
+  tasks:
+    type: array
+    items:
+      type: !include TaskType.raml
+  selectedRow: integer
+  deletedTaskIds:
+    type: array
+    items:
+      type: string
+  resources:
+    type: array
+    items:
+      type: !include ResourceRefType.raml
+  roles:
+    type: array
+    items:
+      type: !include RoleRefType.raml
+  canWrite: boolean
+  canWriteOnParent: boolean
+  zoom: string
