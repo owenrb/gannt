@@ -1,5 +1,6 @@
 package io.owenrbee.gannt.jpa.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -8,8 +9,10 @@ import javax.persistence.ManyToOne;
 public class Assignment {
 	
 	@Id
+	@Column(length = 10)
 	private String id;
-	
+
+	@Column(nullable = false, length = 50)
 	private String name;
 
 	@ManyToOne

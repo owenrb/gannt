@@ -3,6 +3,7 @@ package io.owenrbee.gannt.jpa.model;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -12,7 +13,11 @@ import javax.persistence.OneToMany;
 public class Project {
 
 	@Id
+	@Column(nullable = false, length = 10)
 	private String id;
+	
+	@Column(nullable = false, length = 50)
+	private String name;
 	
 	@OneToMany(mappedBy = "project")
 	private List<Task> tasks;
@@ -97,6 +102,20 @@ public class Project {
 	 */
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

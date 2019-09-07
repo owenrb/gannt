@@ -2,6 +2,7 @@ package io.owenrbee.gannt.jpa.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,13 +14,18 @@ import javax.persistence.OneToMany;
 public class Task {
 
 	@Id
+	@Column(nullable = false, length = 10)
 	private String id;
 	
+	@Column(nullable = false, length = 50)
 	private String name;
+	
+	@Column(nullable = false, length = 10)
 	private String code;
 	private int level;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(length = 25)
 	private TaskStatus status;
 	
 	private Long start;
@@ -30,8 +36,10 @@ public class Task {
 	
 	@OneToMany(mappedBy = "task")
 	private List<Assignment> assigs;
-	
+
+	@Column(nullable = false, length = 125)
 	private String depends;
+	@Column(nullable = false, length = 125)
 	private String description;
 	private Float progress;
 	
